@@ -249,41 +249,6 @@ def enter():
 
 
 
-def connection():
-    if con.is_connected():
-        for i in range(3):
-            print(".")
-            time.sleep(0.5)
-        time.sleep(0.5)
-        os.system("cls")
-        cur=con.cursor()
-        f=int(input("What you want to do ?\n1.create new database\n2.create new table\n3.Entering Records\n4.Updation\n5.Alternation\n6.Drop DataBase\n Choice:- "))
-        if f==1:
-            a=input("enter new database name")
-            database()
-        elif f==2:
-            createnew()
-        elif f==3:
-            print("_"*66,"\nAvailable Databases:-\n")
-            cur.execute('show databases')
-            for x in cur:
-                s=np.array(x)
-                print(s)
-            print('_'*66)
-            i=input("database name to use: ")
-            cur.execute("use {0}".format(i))
-            enter()
-        elif f==4:
-            update()
-        elif f==5:
-            Alter()
-        elif f==6:
-            drop()
-    else:
-        print("No user found....\ncheck user_name and password")
-
-
-
 #Connecting database and calling all the functions
 
 
@@ -342,9 +307,36 @@ elif ch==2:
     a2=input("enter password:-")
     con=mysql.connector.connect(host="localhost",user=a1,password=a2)
     if con.is_connected():
-        print("\nLocalHost Database Connected Successfully")
-        connection()
-    
+        for i in range(3):
+            print(".")
+            time.sleep(0.5)
+        time.sleep(0.5)
+        os.system("cls")
+        cur=con.cursor()
+        f=int(input("What you want to do ?\n1.create new database\n2.create new table\n3.Entering Records\n4.Updation\n5.Alternation\n6.Drop DataBase\n Choice:- "))
+        if f==1:
+            a=input("enter new database name")
+            database()
+        elif f==2:
+            createnew()
+        elif f==3:
+            print("_"*66,"\nAvailable Databases:-\n")
+            cur.execute('show databases')
+            for x in cur:
+                s=np.array(x)
+                print(s)
+            print('_'*66)
+            i=input("database name to use: ")
+            cur.execute("use {0}".format(i))
+            enter()
+        elif f==4:
+            update()
+        elif f==5:
+            Alter()
+        elif f==6:
+            drop()
+    else:
+        print("No user found....\ncheck user_name and password")
     
     
 
