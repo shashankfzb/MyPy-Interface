@@ -71,12 +71,14 @@ def update():
         s=np.array(x)
         print(s)
     print("_"*66) 
+    print("\n-------Write character in single quotes->('abc')------------------\n")
     d=input("column name:- ")
     e=input("new data:- ")
-    f=input("condition:- ")
-    cur.execute("update {0} set {1}={2} where {3}".format(c,d,e,f))
+    f=input("old data:- ")
+    print("update {0} set {1}={2} where {1}={3}".format(c,d,e,f))
+    cur.execute("update {0} set {1}={2} where {1}={3}".format(c,d,e,f))
     con.commit()
-    print("_"*70," \nyour new updated table is here:---/n  ")
+    print("_"*70," \nyour new updated table is here:---\n  ")
     cur.execute("select * from {0}".format(c))
     for x in cur:
         s=np.array(x)
@@ -185,6 +187,7 @@ def database():
         createnew()
     else:
         os.system("cls")
+
 
 
 def createnew():
